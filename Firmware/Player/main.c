@@ -71,8 +71,8 @@
 
 #define ADVERTISING_LED                 BSP_BOARD_LED_0                         /**< Is on when device is advertising. */
 #define CONNECTED_LED                   BSP_BOARD_LED_1                         /**< Is on when device has connected. */
-#define LEDBUTTON_LED                   BSP_BOARD_LED_2                         /**< LED to be toggled with the help of the LED Button Service. */
-#define LEDBUTTON_BUTTON                BSP_BUTTON_0                            /**< Button that will trigger the notification event with the LED Button Service */
+//#define LEDBUTTON_LED                   BSP_BOARD_LED_2                         /**< LED to be toggled with the help of the LED Button Service. */
+//#define LEDBUTTON_BUTTON                BSP_BUTTON_0                            /**< Button that will trigger the notification event with the LED Button Service */
 
 #define DEVICE_NAME                     "Nordic_Blinky"                         /**< Name of device. Will be included in the advertising data. */
 
@@ -269,6 +269,9 @@ static void nrf_qwr_error_handler(uint32_t nrf_error)
  */
 static void led_write_handler(uint16_t conn_handle, ble_lbs_t * p_lbs, uint8_t led_state)
 {
+
+  #warning  "this was used by the service to report receved status"
+  /*
     if (led_state)
     {
         bsp_board_led_on(LEDBUTTON_LED);
@@ -279,6 +282,7 @@ static void led_write_handler(uint16_t conn_handle, ble_lbs_t * p_lbs, uint8_t l
         bsp_board_led_off(LEDBUTTON_LED);
         NRF_LOG_INFO("Received LED OFF!");
     }
+    */
 }
 
 
@@ -485,9 +489,14 @@ static void ble_stack_init(void)
  * @param[in] pin_no        The pin that the event applies to.
  * @param[in] button_action The button action (press/release).
  */
+
+ #warning  "this used to send a notification over ble and flip led status"
+ /*
 static void button_event_handler(uint8_t pin_no, uint8_t button_action)
 {
     ret_code_t err_code;
+
+
 
     switch (pin_no)
     {
@@ -508,10 +517,11 @@ static void button_event_handler(uint8_t pin_no, uint8_t button_action)
             break;
     }
 }
-
+*/
 
 /**@brief Function for initializing the button handler module.
  */
+ /*
 static void buttons_init(void)
 {
     ret_code_t err_code;
@@ -526,7 +536,7 @@ static void buttons_init(void)
                                BUTTON_DETECTION_DELAY);
     APP_ERROR_CHECK(err_code);
 }
-
+*/
 
 static void log_init(void)
 {
@@ -568,7 +578,6 @@ int main(void)
     log_init();
     leds_init();
     timers_init();
-    buttons_init();
     power_management_init();
     ble_stack_init();
     gap_params_init();
