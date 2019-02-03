@@ -1,2 +1,3 @@
 (sym_lib_table
+  (lib (name bluetoothGame-rescue)(type Legacy)(uri ${KIPRJMOD}/bluetoothGame-rescue.lib)(options "")(descr ""))
 )

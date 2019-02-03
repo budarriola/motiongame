@@ -109,7 +109,7 @@ $EndComp
 Wire Wire Line
 	15350 2250 15400 2250
 $Comp
-L BudKiCadComponent:LIS3DH U1
+L bluetoothGame-rescue:LIS3DH-BudKiCadComponent U1
 U 1 1 5C27AAD6
 P 3700 8550
 F 0 "U1" H 4000 9050 60  0000 C CNN
@@ -142,7 +142,7 @@ F 3 "~" H 14450 2650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Fanstel-modules:BT840 U2
+L bluetoothGame-rescue:BT840-Fanstel-modules U2
 U 1 1 5C2807C6
 P 10850 5650
 F 0 "U2" H 10900 7654 45  0000 C CNN
@@ -433,7 +433,7 @@ Wire Wire Line
 Wire Wire Line
 	13300 1250 13300 1300
 $Comp
-L BudKiCadComponent:D_TVS_DF5A6.8LJE D9
+L bluetoothGame-rescue:D_TVS_DF5A6.8LJE-BudKiCadComponent D9
 U 1 1 5C29D423
 P 14700 5750
 F 0 "D9" H 14700 6000 50  0000 C CNN
@@ -497,7 +497,7 @@ Connection ~ 15050 4850
 Wire Wire Line
 	15050 4850 15250 4850
 $Comp
-L BudKiCadComponent:LED_Cree-PLCC4 D2
+L bluetoothGame-rescue:LED_Cree-PLCC4-BudKiCadComponent D2
 U 1 1 5C2AC05D
 P 2150 2550
 F 0 "D2" V 2188 2433 50  0000 R CNN
@@ -508,7 +508,7 @@ F 3 "~" H 2150 2550 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L BudKiCadComponent:LED_Cree-PLCC4 D1
+L bluetoothGame-rescue:LED_Cree-PLCC4-BudKiCadComponent D1
 U 1 1 5C2AC11D
 P 2000 5450
 F 0 "D1" V 2050 5300 50  0000 C CNN
@@ -590,7 +590,7 @@ Connection ~ 3650 9300
 Wire Wire Line
 	3650 9300 3700 9300
 $Comp
-L BudKiCadComponent:LED_Cree-PLCC4 D4
+L bluetoothGame-rescue:LED_Cree-PLCC4-BudKiCadComponent D4
 U 1 1 5C2B8818
 P 2700 2550
 F 0 "D4" V 2738 2433 50  0000 R CNN
@@ -601,7 +601,7 @@ F 3 "~" H 2700 2550 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L BudKiCadComponent:LED_Cree-PLCC4 D3
+L bluetoothGame-rescue:LED_Cree-PLCC4-BudKiCadComponent D3
 U 1 1 5C2B881E
 P 2550 5450
 F 0 "D3" V 2600 5300 50  0000 C CNN
@@ -612,7 +612,7 @@ F 3 "~" H 2550 5450 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L BudKiCadComponent:LED_Cree-PLCC4 D6
+L bluetoothGame-rescue:LED_Cree-PLCC4-BudKiCadComponent D6
 U 1 1 5C2BA129
 P 3250 2550
 F 0 "D6" V 3288 2433 50  0000 R CNN
@@ -623,7 +623,7 @@ F 3 "~" H 3250 2550 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L BudKiCadComponent:LED_Cree-PLCC4 D5
+L bluetoothGame-rescue:LED_Cree-PLCC4-BudKiCadComponent D5
 U 1 1 5C2BA12F
 P 3100 5450
 F 0 "D5" V 3150 5300 50  0000 C CNN
@@ -634,7 +634,7 @@ F 3 "~" H 3100 5450 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L BudKiCadComponent:LED_Cree-PLCC4 D8
+L bluetoothGame-rescue:LED_Cree-PLCC4-BudKiCadComponent D8
 U 1 1 5C2BA135
 P 3800 2550
 F 0 "D8" V 3838 2433 50  0000 R CNN
@@ -645,7 +645,7 @@ F 3 "~" H 3800 2550 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L BudKiCadComponent:LED_Cree-PLCC4 D7
+L bluetoothGame-rescue:LED_Cree-PLCC4-BudKiCadComponent D7
 U 1 1 5C2BA13B
 P 3650 5450
 F 0 "D7" V 3700 5300 50  0000 C CNN
@@ -1224,7 +1224,7 @@ Wire Wire Line
 Wire Wire Line
 	12800 7100 12800 6900
 $Comp
-L BudKiCadComponent:UM6K33NTN Q1
+L bluetoothGame-rescue:UM6K33NTN-BudKiCadComponent Q1
 U 2 1 5C29AC1A
 P 2950 3300
 F 0 "Q1" H 3177 3403 60  0000 L CNN
@@ -1235,7 +1235,7 @@ F 3 "" H 2500 3600 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L BudKiCadComponent:UM6K33NTN Q1
+L bluetoothGame-rescue:UM6K33NTN-BudKiCadComponent Q1
 U 1 1 5C29ACE0
 P 2800 6200
 F 0 "Q1" H 3027 6303 60  0000 L CNN
