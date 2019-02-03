@@ -2575,7 +2575,7 @@
 // <e> NRFX_PWM_ENABLED - nrfx_pwm - PWM peripheral driver
 //==========================================================
 #ifndef NRFX_PWM_ENABLED
-#define NRFX_PWM_ENABLED 0
+#define NRFX_PWM_ENABLED 1
 #endif
 // <q> NRFX_PWM0_ENABLED  - Enable PWM0 instance
  
@@ -4733,7 +4733,7 @@
 // <e> PWM_ENABLED - nrf_drv_pwm - PWM peripheral driver - legacy layer
 //==========================================================
 #ifndef PWM_ENABLED
-#define PWM_ENABLED 0
+#define PWM_ENABLED 1
 #endif
 // <o> PWM_DEFAULT_CONFIG_OUT0_PIN - Out0 pin  <0-31> 
 
@@ -4833,14 +4833,14 @@
  
 
 #ifndef PWM0_ENABLED
-#define PWM0_ENABLED 0
+#define PWM0_ENABLED 1
 #endif
 
 // <q> PWM1_ENABLED  - Enable PWM1 instance
  
 
 #ifndef PWM1_ENABLED
-#define PWM1_ENABLED 0
+#define PWM1_ENABLED 1
 #endif
 
 // <q> PWM2_ENABLED  - Enable PWM2 instance
@@ -6920,7 +6920,7 @@
  
 
 #ifndef NRF_FPRINTF_ENABLED
-#define NRF_FPRINTF_ENABLED 1
+#define NRF_FPRINTF_ENABLED 0
 #endif
 
 // <e> NRF_FSTORAGE_ENABLED - nrf_fstorage - Flash abstraction library
@@ -7156,7 +7156,7 @@
  
 
 #ifndef NRF_STRERROR_ENABLED
-#define NRF_STRERROR_ENABLED 1
+#define NRF_STRERROR_ENABLED 0
 #endif
 
 // <q> NRF_TWI_MNGR_ENABLED  - nrf_twi_mngr - TWI transaction manager
@@ -7224,7 +7224,7 @@
  
 
 #ifndef BUTTON_ENABLED
-#define BUTTON_ENABLED 1
+#define BUTTON_ENABLED 0
 #endif
 
 // <q> BUTTON_HIGH_ACCURACY_ENABLED  - Enables GPIOTE high accuracy for buttons
@@ -7403,7 +7403,7 @@
 // <e> NRF_LOG_BACKEND_UART_ENABLED - nrf_log_backend_uart - Log UART backend
 //==========================================================
 #ifndef NRF_LOG_BACKEND_UART_ENABLED
-#define NRF_LOG_BACKEND_UART_ENABLED 1
+#define NRF_LOG_BACKEND_UART_ENABLED 0
 #endif
 // <o> NRF_LOG_BACKEND_UART_TX_PIN - UART TX pin 
 #ifndef NRF_LOG_BACKEND_UART_TX_PIN
@@ -10153,7 +10153,7 @@
 // <e> PM_LOG_ENABLED - Enable logging in Peer Manager and its submodules.
 //==========================================================
 #ifndef PM_LOG_ENABLED
-#define PM_LOG_ENABLED 1
+#define PM_LOG_ENABLED 0
 #endif
 // <o> PM_LOG_LEVEL  - Default Severity level
  
@@ -10270,7 +10270,7 @@
  
 
 #ifndef NRF_LOG_STR_FORMATTER_TIMESTAMP_FORMAT_ENABLED
-#define NRF_LOG_STR_FORMATTER_TIMESTAMP_FORMAT_ENABLED 1
+#define NRF_LOG_STR_FORMATTER_TIMESTAMP_FORMAT_ENABLED 0
 #endif
 
 // </h> 

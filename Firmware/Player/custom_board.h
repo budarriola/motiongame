@@ -53,15 +53,15 @@ extern "C" {
 #define BSP_LED_1      5
 
 #define LED_RED          NRF_GPIO_PIN_MAP(0,BSP_LED_0)
-#define LED_BLUE          NRF_GPIO_PIN_MAP(1,BSP_LED_1)
+#define LED_GREEN          NRF_GPIO_PIN_MAP(1,BSP_LED_1)
 //#define LED_3          NRF_GPIO_PIN_MAP(0,15)
 //#define LED_4          NRF_GPIO_PIN_MAP(0,16)
 #define LED_START      LED_RED
-#define LED_STOP       LED_BLUE
+#define LED_STOP       LED_GREEN
 
 #define LEDS_ACTIVE_STATE 1
 
-#define LEDS_LIST { LED_RED, LED_BLUE }
+#define LEDS_LIST { LED_RED, LED_GREEN }
 
 #define LEDS_INV_MASK  LEDS_MASK
 

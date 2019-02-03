@@ -76,14 +76,14 @@
       <file file_name="$(NRF_SDK)/modules/nrfx/drivers/src/nrfx_gpiote.c" />
       <file file_name="$(NRF_SDK)/modules/nrfx/drivers/src/nrfx_power_clock.c" />
       <file file_name="$(NRF_SDK)/modules/nrfx/drivers/src/prs/nrfx_prs.c" />
-      <file file_name="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/modules/nrfx/drivers/src/nrfx_twi.c" />
-      <file file_name="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/integration/nrfx/legacy/nrf_drv_twi.c" />
-      <file file_name="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/modules/nrfx/drivers/src/nrfx_twim.c" />
+      <file file_name="$(NRF_SDK)/modules/nrfx/drivers/src/nrfx_twi.c" />
+      <file file_name="$(NRF_SDK)/integration/nrfx/legacy/nrf_drv_twi.c" />
+      <file file_name="$(NRF_SDK)/modules/nrfx/drivers/src/nrfx_twim.c" />
+      <file file_name="../config/sdk_config.h" />
+      <file file_name="$(NRF_SDK)/modules/nrfx/drivers/src/nrfx_pwm.c" />
     </folder>
     <folder Name="Application">
       <file file_name="../../../main.c" />
-      <file file_name="../config/sdk_config.h" />
-      <file file_name="Notes.txt" />
       <folder Name="Board Definition">
         <file file_name="../../../boards.c" />
         <file file_name="../../../boards.h" />
@@ -96,6 +96,14 @@
       <folder Name="Accel">
         <file file_name="../../../lis3dh_reg.c" />
         <file file_name="../../../lis3dh_reg.h" />
+      </folder>
+      <folder Name="BLE">
+        <file file_name="../../../myBle.c" />
+        <file file_name="../../../myBle.h" />
+      </folder>
+      <folder Name="Leds">
+        <file file_name="../../../myLed.c" />
+        <file file_name="../../../myLed.h" />
       </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">
