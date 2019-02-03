@@ -72,13 +72,13 @@
     </folder>
     <folder Name="nRF_Drivers">
       <file file_name="$(NRF_SDK)/integration/nrfx/legacy/nrf_drv_clock.c" />
-      <file file_name="$(NRF_SDK)/integration/nrfx/legacy/nrf_drv_uart.c" />
       <file file_name="$(NRF_SDK)/modules/nrfx/drivers/src/nrfx_clock.c" />
       <file file_name="$(NRF_SDK)/modules/nrfx/drivers/src/nrfx_gpiote.c" />
       <file file_name="$(NRF_SDK)/modules/nrfx/drivers/src/nrfx_power_clock.c" />
       <file file_name="$(NRF_SDK)/modules/nrfx/drivers/src/prs/nrfx_prs.c" />
-      <file file_name="$(NRF_SDK)/modules/nrfx/drivers/src/nrfx_uart.c" />
-      <file file_name="$(NRF_SDK)/modules/nrfx/drivers/src/nrfx_uarte.c" />
+      <file file_name="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/modules/nrfx/drivers/src/nrfx_twi.c" />
+      <file file_name="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/integration/nrfx/legacy/nrf_drv_twi.c" />
+      <file file_name="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/modules/nrfx/drivers/src/nrfx_twim.c" />
     </folder>
     <folder Name="Application">
       <file file_name="../../../main.c" />
@@ -92,6 +92,10 @@
       <folder Name="Services">
         <file file_name="../../../motion_player_service.c" />
         <file file_name="../../../motion_player_service.h" />
+      </folder>
+      <folder Name="Accel">
+        <file file_name="../../../lis3dh_reg.c" />
+        <file file_name="../../../lis3dh_reg.h" />
       </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">

@@ -63,10 +63,16 @@
 #include "nrf_ble_gatt.h"
 #include "nrf_ble_qwr.h"
 #include "nrf_pwr_mgmt.h"
-
+#include "nrf_drv_twi.h"
 #include "nrf_log.h"
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
+#include "lis3dh_reg.h"
+
+#include "app_util_platform.h"
+#include "nrf_drv_twi.h"
+
+
 
 
 #define ADVERTISING_LED                 BSP_BOARD_LED_0                         /**< Is on when device is advertising. */
@@ -122,6 +128,45 @@ static ble_gap_adv_data_t m_adv_data =
 
     }
 };
+
+
+#define ACCELL_I2C_ADDRESS_7B (0x19)
+
+/* TWI instance ID. */
+#if TWI0_ENABLED
+#define TWI_INSTANCE_ID     0
+#elif TWI1_ENABLED
+#define TWI_INSTANCE_ID     1
+#endif
+
+/* TWI instance. */
+static const nrf_drv_twi_t m_twi = NRF_DRV_TWI_INSTANCE(TWI_INSTANCE_ID);
+
+
+
+/**
+ * @brief TWI initialization.
+ */
+void twi_init (void){
+    ret_code_t err_code;
+
+    const nrf_drv_twi_config_t twi_config = {
+       .scl                = ACCEL_SCL_PIN,
+       .sda                = ACCEL_SDA_PIN,
+       .frequency          = NRF_DRV_TWI_FREQ_100K,
+       .interrupt_priority = APP_IRQ_PRIORITY_HIGH,
+       .clear_bus_init     = false
+    };
+
+    err_code = nrf_drv_twi_init(&m_twi, &twi_config, NULL, NULL);
+    APP_ERROR_CHECK(err_code);
+
+    nrf_drv_twi_enable(&m_twi);
+}
+
+
+
+
 
 /**@brief Function for assert macro callback.
  *
@@ -574,6 +619,10 @@ static void idle_state_handle(void)
  */
 int main(void)
 {
+
+    ret_code_t err_code;
+    uint8_t tempData[25];
+    uint8_t address=0;
     // Initialize.
     log_init();
     leds_init();
@@ -585,7 +634,20 @@ int main(void)
     services_init();
     advertising_init();
     conn_params_init();
+    twi_init();
 
+  
+    for (address=1;address<128;address++){
+      //err_code = nrf_drv_twi_rx(&m_twi, ACCELL_I2C_ADDRESS_7B, tempData, 1);
+      #warning "the 2 wire is not working, im not sure if it is a hardware problem or a software problem"
+      err_code = nrf_drv_twi_rx(&m_twi, address, tempData, 1);
+      if (err_code == NRF_SUCCESS)
+      {
+
+          bsp_board_led_on(CONNECTED_LED);
+      }
+
+    }
     // Start execution.
     NRF_LOG_INFO("Blinky example started.");
     advertising_start();

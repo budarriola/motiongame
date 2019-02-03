@@ -65,6 +65,8 @@ extern "C" {
 
 #define LEDS_INV_MASK  LEDS_MASK
 
+#define ACCEL_SCL_PIN             27    // SCL signal pin
+#define ACCEL_SDA_PIN             26    // SDA signal pin
 
 /*
 #define BUTTONS_NUMBER 4
