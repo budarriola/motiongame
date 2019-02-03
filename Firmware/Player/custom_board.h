@@ -49,8 +49,11 @@ extern "C" {
 // LEDs definitions for PCA10056
 #define LEDS_NUMBER    2
 
-#define LED_RED          NRF_GPIO_PIN_MAP(0,12)
-#define LED_BLUE          NRF_GPIO_PIN_MAP(0,105)
+#define BSP_LED_0      12
+#define BSP_LED_1      5
+
+#define LED_RED          NRF_GPIO_PIN_MAP(0,BSP_LED_0)
+#define LED_BLUE          NRF_GPIO_PIN_MAP(1,BSP_LED_1)
 //#define LED_3          NRF_GPIO_PIN_MAP(0,15)
 //#define LED_4          NRF_GPIO_PIN_MAP(0,16)
 #define LED_START      LED_RED
@@ -62,9 +65,8 @@ extern "C" {
 
 #define LEDS_INV_MASK  LEDS_MASK
 
-#define BSP_LED_RED      12
-#define BSP_LED_BLUE      105
 
+/*
 #define BUTTONS_NUMBER 4
 
 #define BUTTON_1       11
@@ -153,7 +155,7 @@ extern "C" {
 #define ARDUINO_A4_PIN              30    // Analog channel 4
 #define ARDUINO_A5_PIN              31    // Analog channel 5
 
-
+*/
 #ifdef __cplusplus
 }
 #endif
