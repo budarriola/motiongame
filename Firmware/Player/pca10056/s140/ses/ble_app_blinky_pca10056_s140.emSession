@@ -69,13 +69,13 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="4" y="183" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" selected="1" top="166" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="166" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" selected="1" top="166" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="7" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../myLed.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="58" y="66" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/integration/nrfx/legacy/nrf_drv_pwm.h" selected="0" top="54" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="99" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/components/libraries/util/app_error_weak.c" selected="0" top="78" codecName=""/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="22" y="58" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../myLed.c" selected="0" top="13" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="66" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/integration/nrfx/legacy/nrf_drv_pwm.h" selected="0" top="54" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="99" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/components/libraries/util/app_error_weak.c" selected="0" top="78" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="58" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../myLed.c" selected="0" top="13" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="63" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../custom_board.h" selected="0" top="36" codecName="Default"/>
-  <SessionOpenFile windowGroup="HUD {4204a062-0e99-4735-8cc8-2abad9d760eb} Left" x="54" y="125" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/modules/nrfx/drivers/include/nrfx_pwm.h" selected="0" top="97" codecName="Default"/>
+  <SessionOpenFile windowGroup="HUD {4204a062-0e99-4735-8cc8-2abad9d760eb} Left" x="0" y="125" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/modules/nrfx/drivers/include/nrfx_pwm.h" selected="0" top="97" codecName="Default"/>
  </Files>
- <ARMCrossStudioWindow activeProject="player_s140" fileDialogDefaultFilter="*.h" autoConnectTarget="J-Link" buildConfiguration="Release" debugSearchFileMap="" fileDialogInitialDirectory="/home/bud/Desktop/GitHub/motiongame/Firmware/Player" debugSearchPath="" autoConnectCapabilities="3711"/>
+ <ARMCrossStudioWindow activeProject="player_s140" fileDialogDefaultFilter="*.h" autoConnectTarget="J-Link" buildConfiguration="Release" debugSearchFileMap="" fileDialogInitialDirectory="/home/bud/Desktop/GitHub/motiongame/Firmware/Player" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>
