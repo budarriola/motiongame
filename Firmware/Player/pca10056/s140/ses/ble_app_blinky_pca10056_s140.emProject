@@ -88,6 +88,8 @@
         <file file_name="../../../boards.c" />
         <file file_name="../../../boards.h" />
         <file file_name="../../../custom_board.h" />
+        <file file_name="../../../power.c" />
+        <file file_name="../../../power.h" />
       </folder>
       <folder Name="Services">
         <file file_name="../../../motion_player_service.c" />

@@ -84,7 +84,7 @@
 
 #include "myBle.h"
 #include "myLed.h"
-
+#include "power.h"
 
 
 
@@ -166,10 +166,11 @@ static void idle_state_handle(void)
 int main(void)
 {
 
-    ret_code_t err_code;
+    static volatile ret_code_t err_code;
     uint8_t tempData[25];
     uint8_t address=0;
     // Initialize.
+    UicrInit();
     //log_init();
     //leds_init();
     timers_init();
@@ -182,9 +183,9 @@ int main(void)
     conn_params_init();
     twi_init();
     
-    BlinkLED(LED_RED);
+    //BlinkLED(LED_RED);
 
-    BlinkLED(LED_GREEN);
+    //BlinkLED(LED_GREEN);
 
     for (address=1;address<128;address++){
       //err_code = nrf_drv_twi_rx(&m_twi, ACCELL_I2C_ADDRESS_7B, tempData, 1);
@@ -193,7 +194,9 @@ int main(void)
       if (err_code == NRF_SUCCESS)
       {
 
-          //BlinkLED(RED_LED_PIN);
+          BlinkLED(LED_GREEN);
+      }else{
+          //BlinkLED(LED_RED);
       }
 
     }
