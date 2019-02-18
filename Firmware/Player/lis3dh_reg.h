@@ -127,7 +127,7 @@ typedef struct{
   */
 
 typedef int32_t (*lis3dh_write_ptr)(void *, uint8_t, uint8_t*, uint16_t);
-typedef int32_t (*lis3dh_read_ptr) (void *, uint8_t, uint8_t*, uint16_t);
+typedef int32_t (*lis3dh_read_ptr)(void *, uint8_t, uint8_t*, uint16_t);
 
 typedef struct {
   /** Component mandatory fields **/

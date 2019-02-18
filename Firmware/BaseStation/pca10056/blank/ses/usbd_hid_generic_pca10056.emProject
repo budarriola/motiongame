@@ -15,24 +15,25 @@
       arm_simulator_memory_simulation_parameter="RWX 00000000,00100000,FFFFFFFF;RWX 20000000,00010000,CDCDCDCD"
       arm_target_device_name="nRF52840_xxAA"
       arm_target_interface_type="SWD"
-      c_user_include_directories="../../../config;$(NRF_SDK)/components;$(NRF_SDK)/components/boards;$(NRF_SDK)/components/drivers_nrf/nrf_soc_nosd;$(NRF_SDK)/components/drivers_nrf/usbd;$(NRF_SDK)/components/libraries/atomic;$(NRF_SDK)/components/libraries/atomic_fifo;$(NRF_SDK)/components/libraries/balloc;$(NRF_SDK)/components/libraries/bsp;$(NRF_SDK)/components/libraries/button;$(NRF_SDK)/components/libraries/cli;$(NRF_SDK)/components/libraries/cli/uart;$(NRF_SDK)/components/libraries/delay;$(NRF_SDK)/components/libraries/experimental_section_vars;$(NRF_SDK)/components/libraries/fifo;$(NRF_SDK)/components/libraries/hardfault;$(NRF_SDK)/components/libraries/hardfault/nrf52;$(NRF_SDK)/components/libraries/log;$(NRF_SDK)/components/libraries/log/src;$(NRF_SDK)/components/libraries/memobj;$(NRF_SDK)/components/libraries/mutex;$(NRF_SDK)/components/libraries/pwr_mgmt;$(NRF_SDK)/components/libraries/queue;$(NRF_SDK)/components/libraries/ringbuf;$(NRF_SDK)/components/libraries/scheduler;$(NRF_SDK)/components/libraries/strerror;$(NRF_SDK)/components/libraries/timer;$(NRF_SDK)/components/libraries/uart;$(NRF_SDK)/components/libraries/usbd;$(NRF_SDK)/components/libraries/usbd/class/hid;$(NRF_SDK)/components/libraries/usbd/class/hid/generic;$(NRF_SDK)/components/libraries/usbd/class/hid/kbd;$(NRF_SDK)/components/libraries/usbd/class/hid/mouse;$(NRF_SDK)/components/libraries/util;$(NRF_SDK)/components/toolchain/cmsis/include;../../..;$(NRF_SDK)/external/fnmatch;$(NRF_SDK)/external/fprintf;$(NRF_SDK)/external/segger_rtt;$(NRF_SDK)/external/utf_converter;$(NRF_SDK)/integration/nrfx;$(NRF_SDK)/integration/nrfx/legacy;$(NRF_SDK)/modules/nrfx;$(NRF_SDK)/modules/nrfx/drivers/include;$(NRF_SDK)/modules/nrfx/hal;$(NRF_SDK)/modules/nrfx/mdk;../config;"
       c_preprocessor_definitions="BOARD_PCA10056;CONFIG_GPIO_AS_PINRESET;DEBUG;DEBUG_NRF;FLOAT_ABI_HARD;INITIALIZE_USER_SECTIONS;NO_VTOR_CONFIG;NRF52840_XXAA;SWI_DISABLE0;"
-      debug_target_connection="J-Link"
-      gcc_entry_point="Reset_Handler"
-      macros="CMSIS_CONFIG_TOOL=$(NRF_SDK)/external_tools/cmsisconfig/CMSIS_Configuration_Wizard.jar"
+      c_user_include_directories="../../../config;$(NRF_SDK)/components;$(NRF_SDK)/components/boards;$(NRF_SDK)/components/drivers_nrf/nrf_soc_nosd;$(NRF_SDK)/components/drivers_nrf/usbd;$(NRF_SDK)/components/libraries/atomic;$(NRF_SDK)/components/libraries/atomic_fifo;$(NRF_SDK)/components/libraries/balloc;$(NRF_SDK)/components/libraries/bsp;$(NRF_SDK)/components/libraries/button;$(NRF_SDK)/components/libraries/cli;$(NRF_SDK)/components/libraries/cli/uart;$(NRF_SDK)/components/libraries/delay;$(NRF_SDK)/components/libraries/experimental_section_vars;$(NRF_SDK)/components/libraries/fifo;$(NRF_SDK)/components/libraries/hardfault;$(NRF_SDK)/components/libraries/hardfault/nrf52;$(NRF_SDK)/components/libraries/log;$(NRF_SDK)/components/libraries/log/src;$(NRF_SDK)/components/libraries/memobj;$(NRF_SDK)/components/libraries/mutex;$(NRF_SDK)/components/libraries/pwr_mgmt;$(NRF_SDK)/components/libraries/queue;$(NRF_SDK)/components/libraries/ringbuf;$(NRF_SDK)/components/libraries/scheduler;$(NRF_SDK)/components/libraries/strerror;$(NRF_SDK)/components/libraries/timer;$(NRF_SDK)/components/libraries/uart;$(NRF_SDK)/components/libraries/usbd;$(NRF_SDK)/components/libraries/usbd/class/hid;$(NRF_SDK)/components/libraries/usbd/class/hid/generic;$(NRF_SDK)/components/libraries/usbd/class/hid/kbd;$(NRF_SDK)/components/libraries/usbd/class/hid/mouse;$(NRF_SDK)/components/libraries/util;$(NRF_SDK)/components/toolchain/cmsis/include;../../..;$(NRF_SDK)/external/fnmatch;$(NRF_SDK)/external/fprintf;$(NRF_SDK)/external/segger_rtt;$(NRF_SDK)/external/utf_converter;$(NRF_SDK)/integration/nrfx;$(NRF_SDK)/integration/nrfx/legacy;$(NRF_SDK)/modules/nrfx;$(NRF_SDK)/modules/nrfx/drivers/include;$(NRF_SDK)/modules/nrfx/hal;$(NRF_SDK)/modules/nrfx/mdk;../config;"
       debug_register_definition_file="$(NRF_SDK)/modules/nrfx/mdk/nrf52840.svd"
       debug_start_from_entry_point_symbol="No"
-      gcc_debugging_level="Level 3"      linker_output_format="hex"
-      linker_printf_width_precision_supported="Yes"
+      debug_target_connection="J-Link"
+      gcc_debugging_level="Level 3"
+      gcc_entry_point="Reset_Handler"
+      linker_output_format="hex"
       linker_printf_fmt_level="long"
+      linker_printf_width_precision_supported="Yes"
       linker_section_placement_file="flash_placement.xml"
       linker_section_placement_macros="FLASH_PH_START=0x0;FLASH_PH_SIZE=0x100000;RAM_PH_START=0x20000000;RAM_PH_SIZE=0x40000;FLASH_START=0x0;FLASH_SIZE=0x100000;RAM_START=0x20000000;RAM_SIZE=0x40000"
       linker_section_placements_segments="FLASH RX 0x0 0x100000;RAM RWX 0x20000000 0x40000"
+      macros="CMSIS_CONFIG_TOOL=$(NRF_SDK)/external_tools/cmsisconfig/CMSIS_Configuration_Wizard.jar"
       project_directory=""
       project_type="Executable" />
-      <folder Name="Segger Startup Files">
-        <file file_name="$(StudioDir)/source/thumb_crt0.s" />
-      </folder>
+    <folder Name="Segger Startup Files">
+      <file file_name="$(StudioDir)/source/thumb_crt0.s" />
+    </folder>
     <folder Name="nRF_Log">
       <file file_name="$(NRF_SDK)/components/libraries/log/src/nrf_log_backend_rtt.c" />
       <file file_name="$(NRF_SDK)/components/libraries/log/src/nrf_log_backend_serial.c" />
@@ -101,6 +102,10 @@
     <folder Name="Application">
       <file file_name="../../../main.c" />
       <file file_name="../config/sdk_config.h" />
+      <folder Name="USB">
+        <file file_name="myUsb.c" />
+        <file file_name="myUsb.h" />
+      </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">
       <file file_name="$(NRF_SDK)/external/segger_rtt/SEGGER_RTT.c" />
@@ -116,10 +121,12 @@
       <file file_name="$(NRF_SDK)/external/utf_converter/utf.c" />
     </folder>
   </project>
-  <configuration Name="Release"
+  <configuration
+    Name="Release"
     c_preprocessor_definitions="NDEBUG"
     gcc_optimization_level="Optimize For Size" />
-  <configuration Name="Debug"
+  <configuration
+    Name="Debug"
     c_preprocessor_definitions="DEBUG; DEBUG_NRF"
-    gcc_optimization_level="None"/>
+    gcc_optimization_level="None" />
 </solution>

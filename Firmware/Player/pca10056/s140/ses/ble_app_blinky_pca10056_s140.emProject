@@ -98,6 +98,8 @@
       <folder Name="Accel">
         <file file_name="../../../lis3dh_reg.c" />
         <file file_name="../../../lis3dh_reg.h" />
+        <file file_name="../../../myAccel.c" />
+        <file file_name="../../../myAccel.h" />
       </folder>
       <folder Name="BLE">
         <file file_name="../../../myBle.c" />
@@ -106,6 +108,11 @@
       <folder Name="Leds">
         <file file_name="../../../myLed.c" />
         <file file_name="../../../myLed.h" />
+      </folder>
+      <folder Name="Game Logic" />
+      <folder Name="I2C">
+        <file file_name="../../../myI2C.c" />
+        <file file_name="../../../myI2C.h" />
       </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">
