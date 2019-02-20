@@ -49,13 +49,23 @@ extern "C" {
 // LEDs definitions for PCA10056
 #define LEDS_NUMBER    2
 
+
+
+#define BSP_ACCEL_INT1  2
+#define BSP_ACCEL_INT2  3
+#define ACCEL_INT1  NRF_GPIO_PIN_MAP(0,BSP_ACCEL_INT1)
+#define ACCEL_INT2  NRF_GPIO_PIN_MAP(0,BSP_ACCEL_INT2)
+
+#define BSP_BUZZ1  2
+#define BSP_BUZZ2  4
+#define BUZZ1  NRF_GPIO_PIN_MAP(1,BSP_BUZZ1)
+#define BUZZ2  NRF_GPIO_PIN_MAP(1,BSP_BUZZ2)
+
 #define BSP_LED_0      12
 #define BSP_LED_1      5
-
 #define LED_RED          NRF_GPIO_PIN_MAP(0,BSP_LED_0)
 #define LED_GREEN          NRF_GPIO_PIN_MAP(1,BSP_LED_1)
-//#define LED_3          NRF_GPIO_PIN_MAP(0,15)
-//#define LED_4          NRF_GPIO_PIN_MAP(0,16)
+
 #define LED_START      LED_RED
 #define LED_STOP       LED_GREEN
 

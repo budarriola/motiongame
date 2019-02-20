@@ -12,9 +12,13 @@
 
 
 
+  /*
+      accelmode_WaitForWakeup = very slowly take mesurements and inturupt when a threshold has been met to power on the device
+  */
+  typedef enum  accelmode {accelmode_WaitForWakeup, accelmode_SimpleReading}accelMode;
 
-  typedef enum  accelmode {accelmode_SimpleReading}accelMode;
   typedef enum  myaccelstate {myaccelstate_Success, myaccelstate_Fail}myAccelState;
+
   myAccelState initAccel(accelMode mode);
 
 

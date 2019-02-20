@@ -213,75 +213,76 @@ static void ble_evt_handler(ble_evt_t const * p_ble_evt, void * p_context)
 
     switch (p_ble_evt->header.evt_id)
     {
-        case BLE_GAP_EVT_CONNECTED:
+    case BLE_GAP_EVT_CONNECTED:
 
-            NRF_LOG_INFO("Connected");
-            /*
-            bsp_board_led_on(CONNECTED_LED);
-            bsp_board_led_off(ADVERTISING_LED);
-            */
-            m_conn_handle = p_ble_evt->evt.gap_evt.conn_handle;
-            err_code = nrf_ble_qwr_conn_handle_assign(&m_qwr, m_conn_handle);
-            APP_ERROR_CHECK(err_code);
+        NRF_LOG_INFO("Connected");
+        /*
+        bsp_board_led_on(CONNECTED_LED);
+        bsp_board_led_off(ADVERTISING_LED);
+        */
+        m_conn_handle = p_ble_evt->evt.gap_evt.conn_handle;
+        err_code = nrf_ble_qwr_conn_handle_assign(&m_qwr, m_conn_handle);
+        APP_ERROR_CHECK(err_code);
 //            err_code = app_button_enable();
 //            APP_ERROR_CHECK(err_code);
-            break;
+        break;
 
-        case BLE_GAP_EVT_DISCONNECTED:
-            NRF_LOG_INFO("Disconnected");
-            //bsp_board_led_off(CONNECTED_LED);
-            m_conn_handle = BLE_CONN_HANDLE_INVALID;
+    case BLE_GAP_EVT_DISCONNECTED:
+        NRF_LOG_INFO("Disconnected");
+        //bsp_board_led_off(CONNECTED_LED);
+        m_conn_handle = BLE_CONN_HANDLE_INVALID;
 //            err_code = app_button_disable();
 //            APP_ERROR_CHECK(err_code);
-            advertising_start();
-            break;
+        advertising_start();
+        break;
 
-        case BLE_GAP_EVT_SEC_PARAMS_REQUEST:
-            // Pairing not supported
-            err_code = sd_ble_gap_sec_params_reply(m_conn_handle,
-                                                   BLE_GAP_SEC_STATUS_PAIRING_NOT_SUPP,
-                                                   NULL,
-                                                   NULL);
-            APP_ERROR_CHECK(err_code);
-            break;
+    case BLE_GAP_EVT_SEC_PARAMS_REQUEST:
+        // Pairing not supported
+        err_code = sd_ble_gap_sec_params_reply(m_conn_handle,
+                                               BLE_GAP_SEC_STATUS_PAIRING_NOT_SUPP,
+                                               NULL,
+                                               NULL);
+        APP_ERROR_CHECK(err_code);
+        break;
 
-        case BLE_GAP_EVT_PHY_UPDATE_REQUEST:
+    case BLE_GAP_EVT_PHY_UPDATE_REQUEST:
+    {
+        NRF_LOG_DEBUG("PHY update request.");
+        ble_gap_phys_t const phys =
         {
-            NRF_LOG_DEBUG("PHY update request.");
-            ble_gap_phys_t const phys =
-            {
-                .rx_phys = BLE_GAP_PHY_AUTO,
-                .tx_phys = BLE_GAP_PHY_AUTO,
-            };
-            err_code = sd_ble_gap_phy_update(p_ble_evt->evt.gap_evt.conn_handle, &phys);
-            APP_ERROR_CHECK(err_code);
-        } break;
+            .rx_phys = BLE_GAP_PHY_AUTO,
+            .tx_phys = BLE_GAP_PHY_AUTO,
+        };
+        err_code = sd_ble_gap_phy_update(p_ble_evt->evt.gap_evt.conn_handle, &phys);
+        APP_ERROR_CHECK(err_code);
+    }
+    break;
 
-        case BLE_GATTS_EVT_SYS_ATTR_MISSING:
-            // No system attributes have been stored.
-            err_code = sd_ble_gatts_sys_attr_set(m_conn_handle, NULL, 0, 0);
-            APP_ERROR_CHECK(err_code);
-            break;
+    case BLE_GATTS_EVT_SYS_ATTR_MISSING:
+        // No system attributes have been stored.
+        err_code = sd_ble_gatts_sys_attr_set(m_conn_handle, NULL, 0, 0);
+        APP_ERROR_CHECK(err_code);
+        break;
 
-        case BLE_GATTC_EVT_TIMEOUT:
-            // Disconnect on GATT Client timeout event.
-            NRF_LOG_DEBUG("GATT Client Timeout.");
-            err_code = sd_ble_gap_disconnect(p_ble_evt->evt.gattc_evt.conn_handle,
-                                             BLE_HCI_REMOTE_USER_TERMINATED_CONNECTION);
-            APP_ERROR_CHECK(err_code);
-            break;
+    case BLE_GATTC_EVT_TIMEOUT:
+        // Disconnect on GATT Client timeout event.
+        NRF_LOG_DEBUG("GATT Client Timeout.");
+        err_code = sd_ble_gap_disconnect(p_ble_evt->evt.gattc_evt.conn_handle,
+                                         BLE_HCI_REMOTE_USER_TERMINATED_CONNECTION);
+        APP_ERROR_CHECK(err_code);
+        break;
 
-        case BLE_GATTS_EVT_TIMEOUT:
-            // Disconnect on GATT Server timeout event.
-            NRF_LOG_DEBUG("GATT Server Timeout.");
-            err_code = sd_ble_gap_disconnect(p_ble_evt->evt.gatts_evt.conn_handle,
-                                             BLE_HCI_REMOTE_USER_TERMINATED_CONNECTION);
-            APP_ERROR_CHECK(err_code);
-            break;
+    case BLE_GATTS_EVT_TIMEOUT:
+        // Disconnect on GATT Server timeout event.
+        NRF_LOG_DEBUG("GATT Server Timeout.");
+        err_code = sd_ble_gap_disconnect(p_ble_evt->evt.gatts_evt.conn_handle,
+                                         BLE_HCI_REMOTE_USER_TERMINATED_CONNECTION);
+        APP_ERROR_CHECK(err_code);
+        break;
 
-        default:
-            // No implementation needed.
-            break;
+    default:
+        // No implementation needed.
+        break;
     }
 }
 
@@ -294,9 +295,9 @@ void advertising_start(void)
     err_code = sd_ble_gap_adv_start(m_adv_handle, APP_BLE_CONN_CFG_TAG);
     APP_ERROR_CHECK(err_code);
 
-/*
-    bsp_board_led_on(ADVERTISING_LED);
-*/
+    /*
+        bsp_board_led_on(ADVERTISING_LED);
+    */
 }
 
 /**@brief Function for initializing the Connection Parameters module.
@@ -456,32 +457,32 @@ void assert_nrf_callback(uint16_t line_num, const uint8_t * p_file_name)
  * @param[in] button_action The button action (press/release).
  */
 
- #warning  "this used to send a notification over ble and flip led status"
- /*
+#warning  "this used to send a notification over ble and flip led status"
+/*
 static void button_event_handler(uint8_t pin_no, uint8_t button_action)
 {
-    ret_code_t err_code;
+   ret_code_t err_code;
 
 
 
-    switch (pin_no)
-    {
-        case LEDBUTTON_BUTTON:
-            NRF_LOG_INFO("Send button state change.");
-            err_code = ble_lbs_on_button_change(m_conn_handle, &m_lbs, button_action);
-            if (err_code != NRF_SUCCESS &&
-                err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
-                err_code != NRF_ERROR_INVALID_STATE &&
-                err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
-            {
-                APP_ERROR_CHECK(err_code);
-            }
-            break;
+   switch (pin_no)
+   {
+       case LEDBUTTON_BUTTON:
+           NRF_LOG_INFO("Send button state change.");
+           err_code = ble_lbs_on_button_change(m_conn_handle, &m_lbs, button_action);
+           if (err_code != NRF_SUCCESS &&
+               err_code != BLE_ERROR_INVALID_CONN_HANDLE &&
+               err_code != NRF_ERROR_INVALID_STATE &&
+               err_code != BLE_ERROR_GATTS_SYS_ATTR_MISSING)
+           {
+               APP_ERROR_CHECK(err_code);
+           }
+           break;
 
-        default:
-            APP_ERROR_HANDLER(pin_no);
-            break;
-    }
+       default:
+           APP_ERROR_HANDLER(pin_no);
+           break;
+   }
 }
 */
 
@@ -494,19 +495,19 @@ static void button_event_handler(uint8_t pin_no, uint8_t button_action)
 static void led_write_handler(uint16_t conn_handle, ble_lbs_t * p_lbs, uint8_t led_state)
 {
 
-  #warning  "this was used by the service to report receved status"
-  /*
-    if (led_state)
-    {
-        bsp_board_led_on(LEDBUTTON_LED);
-        NRF_LOG_INFO("Received LED ON!");
-    }
-    else
-    {
-        bsp_board_led_off(LEDBUTTON_LED);
-        NRF_LOG_INFO("Received LED OFF!");
-    }
-    */
+#warning  "this was used by the service to report receved status"
+    /*
+      if (led_state)
+      {
+          bsp_board_led_on(LEDBUTTON_LED);
+          NRF_LOG_INFO("Received LED ON!");
+      }
+      else
+      {
+          bsp_board_led_off(LEDBUTTON_LED);
+          NRF_LOG_INFO("Received LED OFF!");
+      }
+      */
 }
 
 

@@ -22,25 +22,25 @@ void BlinkLED(uint8_t led)
      * for one second.
      * This scheme is performed three times before the peripheral is stopped.
      */
-    #warning  "i dont know how to make the green led pwm yet"
+#warning  "i dont know how to make the green led pwm yet"
 
-    if (!pwmStarted){
+    if (!pwmStarted) {
         pwmStarted=1;
         pwm_init();
     }
 
-    
+
 
     // This array cannot be allocated on stack (hence "static") and it must
     // be in RAM (hence no "const", though its content is not changed).
     static uint16_t /*const*/ seq_values[] =
     {
         0x8000,
-             0,
+        0,
         0x8000,
-             0,
+        0,
         0x8000,
-             0
+        0
     };
     nrf_pwm_sequence_t const seq =
     {
@@ -50,23 +50,23 @@ void BlinkLED(uint8_t led)
         .end_delay       = 4
     };
 
-    switch (led){
+    switch (led) {
 
-        case LED_RED:
-            (void)nrf_drv_pwm_simple_playback(&m_pwm0, &seq, 3, NRF_DRV_PWM_FLAG_STOP);
-            break;
+    case LED_RED:
+        (void)nrf_drv_pwm_simple_playback(&m_pwm0, &seq, 3, NRF_DRV_PWM_FLAG_STOP);
+        break;
 
-        case LED_GREEN:
-            (void)nrf_drv_pwm_simple_playback(&m_pwm1, &seq, 3, NRF_DRV_PWM_FLAG_STOP);
-            break;
+    case LED_GREEN:
+        (void)nrf_drv_pwm_simple_playback(&m_pwm1, &seq, 3, NRF_DRV_PWM_FLAG_STOP);
+        break;
 
-        default:
-            break;
-    
+    default:
+        break;
+
     }
 }
 
-void pwm_init(){
+void pwm_init() {
     nrf_drv_pwm_config_t const config0 =
     {
         .output_pins =
@@ -84,7 +84,7 @@ void pwm_init(){
         .step_mode    = NRF_PWM_STEP_AUTO
     };
 
-        nrf_drv_pwm_config_t const config1 =
+    nrf_drv_pwm_config_t const config1 =
     {
         .output_pins =
         {

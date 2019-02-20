@@ -31,8 +31,8 @@
 #include "myLed.h"
 #include "power.h"
 #include "myI2C.h"
-
-
+#include "myGpio.h"
+#include "nrf_drv_gpiote.h"
 
 
 
@@ -78,6 +78,59 @@ static void idle_state_handle(void)
 }
 
 
+void in_pin_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)
+{
+    //nrf_drv_gpiote_out_toggle(PIN_OUT);
+    #warning "handle pin inturupts here"
+    if(action==NRF_GPIOTE_POLARITY_HITOLO){
+        switch(pin){
+            case ACCEL_INT1:
+
+                break;
+        
+            case ACCEL_INT2:
+
+                break;
+
+            default:
+
+                break;
+        }
+    }
+
+
+}
+
+/**
+ * @brief Function for configuring: PIN_IN pin for input, PIN_OUT pin for output,
+ * and configures GPIOTE to give an interrupt on pin change.
+ */
+static void gpio_init(void)
+{
+    ret_code_t err_code;
+
+    err_code = nrf_drv_gpiote_init();
+    APP_ERROR_CHECK(err_code);
+
+    nrf_drv_gpiote_out_config_t out_config = GPIOTE_CONFIG_OUT_SIMPLE(false);
+
+    err_code = nrf_drv_gpiote_out_init(BUZZ1, &out_config);
+    APP_ERROR_CHECK(err_code);
+    err_code = nrf_drv_gpiote_out_init(BUZZ2, &out_config);
+    APP_ERROR_CHECK(err_code);
+
+    nrf_drv_gpiote_in_config_t in_config = GPIOTE_CONFIG_IN_SENSE_TOGGLE(true);
+    in_config.pull = NRF_GPIO_PIN_PULLUP;
+
+    err_code = nrf_drv_gpiote_in_init(ACCEL_INT1, &in_config, in_pin_handler);
+    APP_ERROR_CHECK(err_code);
+    err_code = nrf_drv_gpiote_in_init(ACCEL_INT2, &in_config, in_pin_handler);
+    APP_ERROR_CHECK(err_code);
+
+    nrf_drv_gpiote_in_event_enable(ACCEL_INT1, true);
+    nrf_drv_gpiote_in_event_enable(ACCEL_INT2, true);
+}
+
 /**@brief Function for application main entry.
  */
 int main(void)
@@ -97,27 +150,14 @@ int main(void)
     advertising_init();
     conn_params_init();
     twi_init();
-    
-    if(initAccel(accelmode_SimpleReading)==myaccelstate_Success){
+    gpio_init();
+
+    if(initAccel(accelmode_WaitForWakeup)==myaccelstate_Success) {
         BlinkLED(LED_GREEN);
-    }else{
+    } else {
         BlinkLED(LED_RED);
     }
-    /*
-    for (address=1;address<128;address++){
-      //err_code = nrf_drv_twi_rx(&m_twi, ACCELL_I2C_ADDRESS_7B, tempData, 1);
-      #warning "the 2 wire is not working, im not sure if it is a hardware problem or a software problem"
-      err_code = nrf_drv_twi_rx(&m_twi, address, tempData, 1);
-      if (err_code == NRF_SUCCESS)
-      {
 
-          BlinkLED(LED_GREEN);
-      }else{
-          BlinkLED(LED_RED);
-      }
-
-    }
-    */
     // Start execution.
     NRF_LOG_INFO("Blinky example started.");
     advertising_start();

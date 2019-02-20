@@ -114,6 +114,10 @@
         <file file_name="../../../myI2C.c" />
         <file file_name="../../../myI2C.h" />
       </folder>
+      <folder Name="My Gpio">
+        <file file_name="../../../myGpio.c" />
+        <file file_name="../../../myGpio.h" />
+      </folder>
     </folder>
     <folder Name="nRF_Segger_RTT">
       <file file_name="$(NRF_SDK)/external/segger_rtt/SEGGER_RTT.c" />
