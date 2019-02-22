@@ -17,10 +17,7 @@ void BlinkLED(uint8_t led)
 {
 
     /*
-     * This demo uses only one channel, which is reflected on LED 1.
-     * The LED blinks three times (200 ms on, 200 ms off), then it stays off
-     * for one second.
-     * This scheme is performed three times before the peripheral is stopped.
+     * The LED blinks two times
      */
 #warning  "i dont know how to make the green led pwm yet"
 
@@ -35,11 +32,9 @@ void BlinkLED(uint8_t led)
     // be in RAM (hence no "const", though its content is not changed).
     static uint16_t /*const*/ seq_values[] =
     {
-        0x8000,
+        0x1500,
         0,
-        0x8000,
-        0,
-        0x8000,
+        0x1500,
         0
     };
     nrf_pwm_sequence_t const seq =
@@ -47,17 +42,17 @@ void BlinkLED(uint8_t led)
         .values.p_common = seq_values,
         .length          = NRF_PWM_VALUES_LENGTH(seq_values),
         .repeats         = 0,
-        .end_delay       = 4
+        .end_delay       = 0
     };
 
     switch (led) {
 
     case LED_RED:
-        (void)nrf_drv_pwm_simple_playback(&m_pwm0, &seq, 3, NRF_DRV_PWM_FLAG_STOP);
+        (void)nrf_drv_pwm_simple_playback(&m_pwm0, &seq, 1, NRF_DRV_PWM_FLAG_STOP);
         break;
 
     case LED_GREEN:
-        (void)nrf_drv_pwm_simple_playback(&m_pwm1, &seq, 3, NRF_DRV_PWM_FLAG_STOP);
+        (void)nrf_drv_pwm_simple_playback(&m_pwm1, &seq, 1, NRF_DRV_PWM_FLAG_STOP);
         break;
 
     default:
@@ -79,7 +74,7 @@ void pwm_init() {
         .irq_priority = APP_IRQ_PRIORITY_LOWEST,
         .base_clock   = NRF_PWM_CLK_125kHz,
         .count_mode   = NRF_PWM_MODE_UP,
-        .top_value    = 25000,
+        .top_value    = 2500,
         .load_mode    = NRF_PWM_LOAD_COMMON,
         .step_mode    = NRF_PWM_STEP_AUTO
     };
@@ -96,7 +91,7 @@ void pwm_init() {
         .irq_priority = APP_IRQ_PRIORITY_LOWEST,
         .base_clock   = NRF_PWM_CLK_125kHz,
         .count_mode   = NRF_PWM_MODE_UP,
-        .top_value    = 25000,
+        .top_value    = 2500,
         .load_mode    = NRF_PWM_LOAD_COMMON,
         .step_mode    = NRF_PWM_STEP_AUTO
     };

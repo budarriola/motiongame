@@ -31,7 +31,6 @@
 #include "myLed.h"
 #include "power.h"
 #include "myI2C.h"
-#include "myGpio.h"
 #include "nrf_drv_gpiote.h"
 
 
@@ -82,14 +81,21 @@ void in_pin_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)
 {
     //nrf_drv_gpiote_out_toggle(PIN_OUT);
     #warning "handle pin inturupts here"
-    if(action==NRF_GPIOTE_POLARITY_HITOLO){
+    if((action==NRF_GPIOTE_POLARITY_HITOLO)||(action==NRF_GPIOTE_POLARITY_TOGGLE)){
+
         switch(pin){
             case ACCEL_INT1:
-
+                    if (nrf_drv_gpiote_in_is_set(pin)==false){
+                        //if the pin is low
+                        BlinkLED(LED_RED);
+                    }
                 break;
         
             case ACCEL_INT2:
-
+                    if (nrf_drv_gpiote_in_is_set(pin)==false){
+                        //if the pin is low
+                        BlinkLED(LED_RED);
+                    }
                 break;
 
             default:
@@ -152,10 +158,10 @@ int main(void)
     twi_init();
     gpio_init();
 
-    if(initAccel(accelmode_WaitForWakeup)==myaccelstate_Success) {
+    if(initAccel(accelmode_WaitForWakeup,0x00)==myaccelstate_Success) {
         BlinkLED(LED_GREEN);
     } else {
-        BlinkLED(LED_RED);
+        //BlinkLED(LED_RED);
     }
 
     // Start execution.

@@ -9,7 +9,7 @@
   #ifdef __cplusplus
   extern "C" {
   #endif
-
+  #include <stdint.h>
 
 
   /*
@@ -18,8 +18,17 @@
   typedef enum  accelmode {accelmode_WaitForWakeup, accelmode_SimpleReading}accelMode;
 
   typedef enum  myaccelstate {myaccelstate_Success, myaccelstate_Fail}myAccelState;
-
-  myAccelState initAccel(accelMode mode);
+  /*
+  typedef struct{
+      int16_t xmax;
+      int16_t xmin;
+      int16_t ymax;
+      int16_t ymin;
+      int16_t zmax;
+      int16_t zmin;
+   }myAccelThresholds;
+*/
+  myAccelState initAccel(accelMode mode,uint8_t value);
 
 
   #ifdef __cplusplus

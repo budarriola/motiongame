@@ -31,7 +31,6 @@
   <ProjectSessionItem path="game_s140;player_s140;Application;Board Definition"/>
   <ProjectSessionItem path="game_s140;player_s140;Application;I2C"/>
   <ProjectSessionItem path="game_s140;player_s140;Application;Leds"/>
-  <ProjectSessionItem path="game_s140;player_s140;Application;My Gpio"/>
   <ProjectSessionItem path="game_s140;player_s140;nRF_Drivers"/>
  </Project>
  <Register1>
@@ -58,7 +57,7 @@
  </TraceWindow>
  <Watch1>
   <Watches active="1" update="Never">
-   <Watchpoint numelements="0" expression="m_twi" evalMode="0" name="m_twi" radix="-1" linenumber="285" filename="../../../main.c" list=""/>
+   <Watchpoint numelements="0" expression="m_twi" evalMode="0" name="m_twi" radix="-1" linenumber="291" filename="../../../main.c" list=""/>
    <Watchpoint numelements="0" expression="REGOUT0" evalMode="0" name="REGOUT0" radix="16" linenumber="29" filename="../../../power.c" list=""/>
   </Watches>
  </Watch1>
@@ -72,17 +71,11 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="61" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../myAccel.c" selected="0" top="34" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="501" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../lis3dh_reg.h" selected="0" top="499" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="96" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" selected="1" top="117" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="706" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../lis3dh_reg.c" selected="0" top="697" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="19" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../myAccel.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="1" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../myGpio.c" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="58" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../custom_board.h" selected="0" top="39" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="92" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/integration/nrfx/legacy/nrf_drv_gpiote.h" selected="0" top="71" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="297" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/modules/nrfx/drivers/src/nrfx_gpiote.c" selected="0" top="276" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../myLed.c" selected="0" top="15" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="69" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../../../../NRF_SDK/nRF5_SDK_15.2.0_9412b96/modules/nrfx/hal/nrf_gpiote.h" selected="0" top="50" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="24" y="96" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" selected="0" top="66" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="12" y="304" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../lis3dh_reg.h" selected="0" top="279" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="49" y="1060" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../lis3dh_reg.c" selected="0" top="1038" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="11" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../myAccel.h" selected="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="34" y="224" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../myAccel.c" selected="1" top="198" codecName="Default"/>
  </Files>
- <ARMCrossStudioWindow activeProject="player_s140" fileDialogDefaultFilter="*.h" autoConnectTarget="J-Link" buildConfiguration="Release" debugSearchFileMap="" fileDialogInitialDirectory="/home/bud/Desktop/GitHub/motiongame/Firmware/Player" debugSearchPath="" autoConnectCapabilities="3199"/>
+ <ARMCrossStudioWindow activeProject="player_s140" fileDialogDefaultFilter="*.h" autoConnectTarget="J-Link" buildConfiguration="Release" debugSearchFileMap="" fileDialogInitialDirectory="/home/bud/Desktop/GitHub/motiongame/Firmware/Player" debugSearchPath="" autoConnectCapabilities="3711"/>
 </session>

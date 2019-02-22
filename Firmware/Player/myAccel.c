@@ -11,6 +11,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+//number of samples required to establish a baseline acceleration identifying a sleep state
+#define WaitForWakeup_SAMPLES 50
+//noise margin multiplyer
+#define WaitForWakeup_NOISE_FACTOR 2
+
 static int32_t platform_write(void *handle, uint8_t reg, uint8_t *bufp, uint16_t len);
 static int32_t platform_read(void *handle, uint8_t reg, uint8_t *bufp, int16_t len);
 
@@ -20,12 +25,13 @@ uint8_t firstIntDone=0;
 
 /*
   init the accel
+  value is used in accelmode_WaitForWakeup to set the intirupt threshold
 */
-myAccelState initAccel(accelMode mode){
+myAccelState initAccel(accelMode mode,uint8_t value){
      uint8_t temp0;
-     uint16_t xMin,yMin,zMin;
-     uint16_t xAvg,yAvg,zAvg;
-     uint16_t xMax,yMax,zMax;
+     lis3dh_int1_src_t tempIntSrc;
+     lis3dh_int1_cfg_t tempCfgSrc;
+     
      myAccelState ret = myaccelstate_Success;
       /*
      *  Initialize mems driver interface
@@ -59,86 +65,204 @@ myAccelState initAccel(accelMode mode){
                 set thresholds for inturupt
                 start inturupt mode so that the mcu can go to sleep waiting for the adc to start it
             */
-            #warning "finish this case"
-            /*
+            #warning "finish this case it is not generating an inturupt as it should"
             
+            
+            
+            //lis3dh_high_pass_bandwidth_set
+            //lis3dh_high_pass_mode_set
+
+            //Latch interrupt request on INT1_SRC register, with INT1_SRC (31h) register cleared by reading INT1_SRC (31h) itself. 
+            lis3dh_boot_set(&dev_ctx,0x08);
+
+            /*
              *  Enable Block Data Update
                 output registers not updated until MSB and LSB reading when set)
              */
             if (lis3dh_block_data_update_set(&dev_ctx, PROPERTY_ENABLE)!=0){
-                ret=myaccelstate_Fail;
+                return myaccelstate_Fail;
             }
 
             /*
-             * Set Output Data Rate to 1Hz
+             * Set Output Data Rate to 10Hz
              */
-            if (lis3dh_data_rate_set(&dev_ctx, LIS3DH_ODR_50Hz)!=0){
-                ret=myaccelstate_Fail;
+            if (lis3dh_data_rate_set(&dev_ctx, LIS3DH_ODR_10Hz)!=0){
+                return myaccelstate_Fail;
             }
 
             /*
-             * Set full scale to 8g
+             * Set full scale to 4g
              */  
-            if (lis3dh_full_scale_set(&dev_ctx, LIS3DH_8g)!=0){
-                ret=myaccelstate_Fail;
+            if (lis3dh_full_scale_set(&dev_ctx, LIS3DH_4g)!=0){
+                return myaccelstate_Fail;
             }
 
             /*
              * dissable temperature sensor
              */   
             if (lis3dh_aux_adc_set(&dev_ctx, LIS3DH_AUX_DISABLE)!=0){
-                ret=myaccelstate_Fail;
+                return myaccelstate_Fail;
             }
 
             /*
-             * Set device in continuous mode with 12 bit resol.
+             * Set device in continuous mode with 8 bit resol.
              */   
             if (lis3dh_operating_mode_set(&dev_ctx, LIS3DH_LP_8bit)!=0){
-                ret=myaccelstate_Fail;
+                return myaccelstate_Fail;
             }
+            
+
+            /*
+                1 LSb = 1/ODR
+                The D[6:0] bits set the minimum duration of the Interrupt 1 event to be recognized. Duration
+                steps and maximum values depend on the ODR chosen.
+                Duration time is measured in N/ODR, where N is the content of the duration register.
+            */
+            lis3dh_int1_gen_duration_set(&dev_ctx,0x01);
+
+            /*
+                THS[6:0]
+                Interrupt 1 threshold. Default value: 000 0000
+                1 LSb = 16 mg @ FS = ±2 g
+                1 LSb = 32 mg @ FS = ±4 g
+                1 LSb = 62 mg @ FS = ±8 g
+                1 LSb = 186 mg @ FS = ±16 g
+            */
+            lis3dh_int1_gen_threshold_set(&dev_ctx,value);
+
+            //read int1 source to clear it
+            lis3dh_int1_gen_source_get(&dev_ctx,&tempIntSrc);
+
+            //set int1 for all axies min or max threshold
+            tempCfgSrc.xhie=1;
+            tempCfgSrc.xlie=1;
+            tempCfgSrc.yhie=1;
+            tempCfgSrc.ylie=1;
+            tempCfgSrc.zhie=1;
+            tempCfgSrc.zlie=1;
+            lis3dh_int1_gen_conf_set(&dev_ctx,&tempCfgSrc);
+
+            
+
+
+
+            /*
+            xAvg=0;
+            yAvg=0;
+            zAvg=0;
+
+            for (temp0=0; temp0<WaitForWakeup_SAMPLES; temp0++){
+                if (lis3dh_temp_data_ready_get(&dev_ctx,&temp1)!=0){
+                  return myaccelstate_Fail;
+                }
+
+                while (!temp1){
+                    #warning "add timeout here"
+                }
+
+                //there is new excell data
+                // Read accelerometer data 
+                memset(accelData, 0x00, 3*sizeof(int16_t));
+                lis3dh_acceleration_raw_get(&dev_ctx, accelData);
+                xAvg+=accelData[0];
+                yAvg+=accelData[1];
+                zAvg+=accelData[2];
+
+                
+                //track min and max values of the accel
+                if (accelData[0] > xMax)
+                {
+                    xMax = accelData[0];
+                }else if (accelData[0] < xMin)
+                    {
+                        xMin = accelData[0];
+                    }
+
+                if (accelData[1] > yMax)
+                {
+                    yMax = accelData[1];
+                }else if (accelData[1] < yMin)
+                    {
+                        yMin = accelData[1];
+                    }
+
+                if (accelData[2] > zMax)
+                {
+                    zMax = accelData[2];
+                }else if (accelData[2] < zMin)
+                    {
+                        zMin = accelData[2];
+                    }
+                
+
+            }
+            
+#warning "it would be better to collect this data in the main loop insted of in a canned routiene"
+            //find the avrage of all samples
+            xAvg/=WaitForWakeup_SAMPLES;
+            yAvg/=WaitForWakeup_SAMPLES;
+            zAvg/=WaitForWakeup_SAMPLES;
+
+            xMax += ( (int32_t)xMax - (int32_t)xAvg ) * WaitForWakeup_NOISE_FACTOR;
+            xMin -= ( (int32_t)xAvg - (int32_t)xMin ) * WaitForWakeup_NOISE_FACTOR;
+            
+            yMax += ( (int32_t)yMax - (int32_t)yAvg ) * WaitForWakeup_NOISE_FACTOR;
+            yMin -= ( (int32_t)yAvg - (int32_t)yMin ) * WaitForWakeup_NOISE_FACTOR;
+
+            zMax += ( (int32_t)zMax - (int32_t)zAvg ) * WaitForWakeup_NOISE_FACTOR;
+            zMin -= ( (int32_t)zAvg - (int32_t)zMin ) * WaitForWakeup_NOISE_FACTOR;
+
+
+            //lis3dh_status_get
+            //lis3dh_int1_gen_threshold_set
+            //lis3dh_int1_gen_duration_set
+            */
 
             break;
 
         case accelmode_SimpleReading:
+
+        #warning "finish this case"
+
             /*
              *  Enable Block Data Update
                 output registers not updated until MSB and LSB reading when set)
              */
             if (lis3dh_block_data_update_set(&dev_ctx, PROPERTY_DISABLE)!=0){
-                ret=myaccelstate_Fail;
+                return myaccelstate_Fail;
             }
 
             /*
              * Set Output Data Rate to 1Hz
              */
             if (lis3dh_data_rate_set(&dev_ctx, LIS3DH_ODR_1Hz)!=0){
-                ret=myaccelstate_Fail;
+                return myaccelstate_Fail;
             }
 
             /*
-             * Set full scale to 2g
+             * Set full scale to 4g
              */  
-            if (lis3dh_full_scale_set(&dev_ctx, LIS3DH_2g)!=0){
-                ret=myaccelstate_Fail;
+            if (lis3dh_full_scale_set(&dev_ctx, LIS3DH_4g)!=0){
+                return myaccelstate_Fail;
             }
 
             /*
              * dissable temperature sensor
              */   
             if (lis3dh_aux_adc_set(&dev_ctx, LIS3DH_AUX_DISABLE)!=0){
-                ret=myaccelstate_Fail;
+                return myaccelstate_Fail;
             }
 
             /*
              * Set device in continuous mode with 12 bit resol.
              */   
             if (lis3dh_operating_mode_set(&dev_ctx, LIS3DH_NM_10bit)!=0){
-                ret=myaccelstate_Fail;
+                return myaccelstate_Fail;
             }
             break;
             
             default :
-                ret=myaccelstate_Fail;
+                return myaccelstate_Fail;
                 break;
 
     }

@@ -12,7 +12,7 @@ void twi_init (void) {
     const nrf_drv_twi_config_t twi_config = {
         .scl                = ACCEL_SCL_PIN,
         .sda                = ACCEL_SDA_PIN,
-        .frequency          = NRF_DRV_TWI_FREQ_100K,
+        .frequency          = NRF_DRV_TWI_FREQ_400K,
         .interrupt_priority = APP_IRQ_PRIORITY_HIGH,
         .clear_bus_init     = false
     };
