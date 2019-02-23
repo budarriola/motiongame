@@ -25,7 +25,7 @@ uint8_t firstIntDone=0;
 accelSettings setting_SimpleRead={
   .highPassIrq=LIS3DH_ON_INT1_GEN,
   .highPassOutput=PROPERTY_DISABLE,
-  .int1Type.i1_ia1 = PROPERTY_DISABLE,  //dissable inturupt
+  .int1Type.i1_zyxda = PROPERTY_ENABLE,  //inirupt on new data avalable
   .int1Latch=LIS3DH_INT1_LATCHED,
   .fullScale=LIS3DH_4g,
   .int1Threshold=0,
@@ -33,12 +33,13 @@ accelSettings setting_SimpleRead={
   .int1Source=0,
   .resolution=LIS3DH_NM_10bit,
   .sampleRate=LIS3DH_ODR_100Hz,
+  .blockDataUpdate=PROPERTY_ENABLE,
 };
 
 accelSettings setting_sleep={
   .highPassIrq=LIS3DH_ON_INT1_GEN,
   .highPassOutput=PROPERTY_ENABLE,
-  .int1Type.i1_ia1 = PROPERTY_ENABLE,
+  .int1Type.i1_ia1 = PROPERTY_ENABLE, //initrupt on low or high axis events on any axis
   .int1Latch=LIS3DH_INT1_LATCHED,
   .fullScale=LIS3DH_2g,
   .int1Threshold=0x15,
@@ -49,6 +50,7 @@ accelSettings setting_sleep={
   .int1Source.aoi = PROPERTY_ENABLE,
   .resolution=LIS3DH_LP_8bit,
   .sampleRate=LIS3DH_ODR_10Hz,
+  .blockDataUpdate=PROPERTY_DISABLE,
 };
 
 /*
@@ -102,6 +104,8 @@ myAccelState initAccel(accelMode mode,uint8_t value){
 
 
 
+    // Enable Block Data Update
+    lis3dh_block_data_update_set(&dev_ctx, settings->blockDataUpdate);
 
     // High-pass filter enabled on interrupt activity 1    
     lis3dh_high_pass_int_conf_set(&dev_ctx, settings->highPassIrq);
@@ -140,7 +144,7 @@ myAccelState initAccel(accelMode mode,uint8_t value){
     lis3dh_int1_gen_conf_set(&dev_ctx, &settings->int1Source);
 
     
-    // Set device in lp mode
+    // Set device mode
     lis3dh_operating_mode_set(&dev_ctx, settings->resolution);
 
     

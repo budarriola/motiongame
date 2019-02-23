@@ -43,6 +43,7 @@
       lis3dh_int1_cfg_t int1Source;
       lis3dh_op_md_t resolution;
       lis3dh_odr_t sampleRate;        //odr sample rate
+      uint8_t blockDataUpdate;        //if set wait for all data registers to be read before takeing a new reading
 
   }accelSettings;
 
