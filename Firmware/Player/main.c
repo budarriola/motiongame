@@ -79,6 +79,7 @@ static void idle_state_handle(void)
 
 void in_pin_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)
 {
+    lis3dh_int1_src_t src;
     //nrf_drv_gpiote_out_toggle(PIN_OUT);
     #warning "handle pin inturupts here"
     if((action==NRF_GPIOTE_POLARITY_HITOLO)||(action==NRF_GPIOTE_POLARITY_TOGGLE)){
@@ -87,6 +88,7 @@ void in_pin_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)
             case ACCEL_INT1:
                     if (nrf_drv_gpiote_in_is_set(pin)==false){
                         //if the pin is low
+                        lis3dh_int1_gen_source_get(&dev_ctx, &src);
                         BlinkLED(LED_RED);
                     }
                 break;
@@ -94,6 +96,7 @@ void in_pin_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)
             case ACCEL_INT2:
                     if (nrf_drv_gpiote_in_is_set(pin)==false){
                         //if the pin is low
+                        lis3dh_int1_gen_source_get(&dev_ctx, &src);
                         BlinkLED(LED_RED);
                     }
                 break;

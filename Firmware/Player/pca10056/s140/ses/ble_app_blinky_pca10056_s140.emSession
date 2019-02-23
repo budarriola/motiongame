@@ -57,7 +57,7 @@
  </TraceWindow>
  <Watch1>
   <Watches active="1" update="Never">
-   <Watchpoint numelements="0" expression="m_twi" evalMode="0" name="m_twi" radix="-1" linenumber="291" filename="../../../main.c" list=""/>
+   <Watchpoint numelements="0" expression="m_twi" evalMode="0" name="m_twi" radix="-1" linenumber="294" filename="../../../main.c" list=""/>
    <Watchpoint numelements="0" expression="REGOUT0" evalMode="0" name="REGOUT0" radix="16" linenumber="29" filename="../../../power.c" list=""/>
   </Watches>
  </Watch1>
@@ -71,11 +71,11 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="24" y="96" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" selected="0" top="66" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="12" y="304" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../lis3dh_reg.h" selected="0" top="279" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="49" y="1060" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../lis3dh_reg.c" selected="0" top="1038" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="11" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../myAccel.h" selected="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="34" y="224" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../myAccel.c" selected="1" top="198" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="145" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../main.c" selected="0" top="124" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="17" y="510" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../lis3dh_reg.h" selected="0" top="490" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="8" y="1027" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../lis3dh_reg.c" selected="0" top="1006" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="19" y="30" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../myAccel.c" selected="1" top="18" codecName="Default"/>
+  <SessionOpenFile windowGroup="HUD {9a46a75b-8c84-4187-826e-3c4396f3a149} Middle" x="17" y="35" useTextEdit="1" useBinaryEdit="0" left="0" path="../../../myAccel.h" selected="0" top="0" codecName="Default"/>
  </Files>
  <ARMCrossStudioWindow activeProject="player_s140" fileDialogDefaultFilter="*.h" autoConnectTarget="J-Link" buildConfiguration="Release" debugSearchFileMap="" fileDialogInitialDirectory="/home/bud/Desktop/GitHub/motiongame/Firmware/Player" debugSearchPath="" autoConnectCapabilities="3711"/>
 </session>

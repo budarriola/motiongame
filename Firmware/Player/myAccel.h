@@ -11,7 +11,9 @@
   #endif
   #include <stdint.h>
 
+  #include "lis3dh_reg.h"
 
+  extern lis3dh_ctx_t dev_ctx;
   /*
       accelmode_WaitForWakeup = very slowly take mesurements and inturupt when a threshold has been met to power on the device
   */
@@ -29,7 +31,20 @@
    }myAccelThresholds;
 */
   myAccelState initAccel(accelMode mode,uint8_t value);
+  
+  typedef struct {
+      lis3dh_hp_t highPassIrq;        //High-pass filter on interrupts/tap generator
+      uint8_t highPassOutput;         //High pass data from internal filter sent to output register (PROPERTY_ENABLE/PROPERTY_DISSABLE)
+      lis3dh_ctrl_reg3_t int1Type;    //int1 pin inturupt type
+      lis3dh_lir_int1_t int1Latch;    //will int1 be latching or pulsed LIS3DH_INT1_LATCHED
+      lis3dh_fs_t fullScale;          //full scale output
+      uint8_t int1Threshold;          //interrupt 1 threshold
+      uint8_t int1Duration;           //The minimum duration (LSb = 1/ODR) of the Interrupt 1 event to be recognized
+      lis3dh_int1_cfg_t int1Source;
+      lis3dh_op_md_t resolution;
+      lis3dh_odr_t sampleRate;        //odr sample rate
 
+  }accelSettings;
 
   #ifdef __cplusplus
   }
