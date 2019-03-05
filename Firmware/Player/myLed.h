@@ -11,8 +11,8 @@ extern "C" {
 
 
 
-void BlinkLED(uint8_t led);
-
+void blinkLED(uint8_t led);
+void setLedBrightness(uint8_t led,uint8_t brightnessPercent);
 
 #ifdef __cplusplus
 }

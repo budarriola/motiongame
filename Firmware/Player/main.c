@@ -81,7 +81,7 @@ void in_pin_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)
 {
     lis3dh_int1_src_t src;
     //nrf_drv_gpiote_out_toggle(PIN_OUT);
-    #warning "handle pin inturupts here"
+    #error "move led changes to the main loop to make them work agian"
     if((action==NRF_GPIOTE_POLARITY_HITOLO)||(action==NRF_GPIOTE_POLARITY_TOGGLE)){
 
         switch(pin){
@@ -89,7 +89,7 @@ void in_pin_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)
                     if (nrf_drv_gpiote_in_is_set(pin)==false){
                         //if the pin is low
                         lis3dh_int1_gen_source_get(&dev_ctx, &src);
-                        BlinkLED(LED_RED);
+                        blinkLED(LED_RED);
                     }
                 break;
         
@@ -97,7 +97,7 @@ void in_pin_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action)
                     if (nrf_drv_gpiote_in_is_set(pin)==false){
                         //if the pin is low
                         lis3dh_int1_gen_source_get(&dev_ctx, &src);
-                        BlinkLED(LED_RED);
+                        blinkLED(LED_RED);
                     }
                 break;
 
@@ -162,10 +162,12 @@ int main(void)
     gpio_init();
 
     if(initAccel(accelmode_WaitForWakeup,0x00)==myaccelstate_Success) {
-        BlinkLED(LED_GREEN);
+        blinkLED(LED_GREEN);
     } else {
-        //BlinkLED(LED_RED);
+        //blinkLED(LED_RED);
     }
+
+    setLedBrightness(LED_GREEN,1);
 
     // Start execution.
     NRF_LOG_INFO("Blinky example started.");
