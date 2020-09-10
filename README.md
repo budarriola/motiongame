@@ -1,5 +1,7 @@
 # motiongame
 
+WORK IN PROGRESS
+
 the game state machene and processsing should be kept seprate form all hardware calls. that way it can be migrated to a diffrent proccessor at a later time
 
 Game Modes
